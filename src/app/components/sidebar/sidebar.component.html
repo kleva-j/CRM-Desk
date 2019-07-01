@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+
+    <mat-toolbar color="primary" class="center">
+      <mat-icon>wifi_tethering</mat-icon>
+      <h6>CRM-Desk</h6>
+    </mat-toolbar>
+
+    <mat-toolbar-row *ngFor="let item of sideMenuItems" class="sidenav-item">
+      <span class="sideitem" (click)="setActiveTab($event)" routerLink="{{item.path}}">
+        <mat-icon color="primary">{{item.iconName}}</mat-icon>
+        <span>{{item.title}}</span>
+      </span>
+    </mat-toolbar-row>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-navbar [title]="activeTab"
+      [opened]="opened"
+      (burgerNav)="toggleSidebar($event)">
+    </app-navbar>
+    <router-outlet></router-outlet>
+    <!--
+    <section class="show">
+      <div class="blue h-100"></div>
+      <div class="yellow h-100"></div>
+      <div class="orange h-100"></div>
+    </section>
+
+    <section class="chart">
+      <app-table></app-table>
+    </section> -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
